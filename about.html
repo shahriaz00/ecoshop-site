@@ -129,3 +129,100 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoShop • Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .post-card{
+      min-height: 320px;
+      display:flex; flex-direction:column;
+    }
+    .icon-wrap{ height:110px; display:grid; place-items:center; margin-bottom:10px; }
+    .icon{ font-size:56px; }
+    .tag{ font-size:11px; font-weight:700; color:var(--muted); margin-bottom:8px; }
+    .post-card h3{ font-size:18px; font-weight:800; margin-bottom:8px; }
+    .post-card p{ color:var(--muted); font-size:14px; margin-bottom:14px; }
+    .read-more{
+      margin-top:auto; font-weight:700; font-size:13px;
+      color:var(--accent); text-decoration:none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html"><span class="leaf">🌿</span><span>EcoShop</span></a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="page-title">Sustainability Resources</h1>
+    <p class="page-subtitle">Learn about sustainable living and make informed choices</p>
+
+    <section class="grid">
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">♻️</div></div>
+        <div class="tag">Zero Waste</div>
+        <h3>10 Easy Swaps for a Zero-Waste Kitchen</h3>
+        <p>Discover simple changes that reduce kitchen waste and save money.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">👕</div></div>
+        <div class="tag">Eco Living</div>
+        <h3>The True Cost of Fast Fashion</h3>
+        <p>Understand environmental and social impacts of clothing choices.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">🌱</div></div>
+        <div class="tag">Supplier Story</div>
+        <h3>Meet Our Organic Cotton Farmers</h3>
+        <p>An interview with the family-run farm behind our cotton.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">🏡</div></div>
+        <div class="tag">Home Tips</div>
+        <h3>Creating an Eco-Friendly Home on a Budget</h3>
+        <p>Practical tips to make your home greener without overspending.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">🌊</div></div>
+        <div class="tag">Impact</div>
+        <h3>How We’re Reducing Plastic in Our Oceans</h3>
+        <p>Learn how our partnerships help keep oceans clean.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+
+      <article class="card post-card">
+        <div class="icon-wrap"><div class="icon">📚</div></div>
+        <div class="tag">Education</div>
+        <h3>Understanding Eco-Certifications</h3>
+        <p>A guide to sustainability certifications and what they mean.</p>
+        <a class="read-more" href="#">Read More →</a>
+      </article>
+    </section>
+  </div>
+</main>
+
+</body>
+</html>

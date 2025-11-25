@@ -269,3 +269,270 @@
   </main>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoShop • Sustainability Resources</title>
+
+  <style>
+    :root{
+      --bg: #eef6f2;
+      --page-bg: #f7fbf9;
+      --card: #ffffff;
+      --text: #0f241f;
+      --muted: #5f6f6a;
+      --accent: #2f6b57;
+      --shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+      --radius: 14px;
+    }
+
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--page-bg);
+      line-height: 1.6;
+    }
+
+    /* Header / Nav */
+    header{
+      background: #fff;
+      padding: 16px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+    }
+    .logo .leaf{ font-size: 22px; }
+
+    nav ul{
+      list-style: none;
+      display: flex;
+      gap: 26px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    nav a{
+      text-decoration: none;
+      color: var(--text);
+      opacity: .9;
+      padding: 4px 2px;
+    }
+    nav a:hover{ opacity: 1; }
+    nav a.active{
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+
+    /* Main */
+    main{
+      background: var(--bg);
+      padding: 48px 22px 70px;
+      min-height: calc(100vh - 70px);
+    }
+    .container{
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .title{
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .subtitle{
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 26px;
+    }
+
+    /* Grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 8px;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+    }
+
+    .icon-wrap{
+      height: 120px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+    }
+    .icon{
+      font-size: 56px;
+      filter: saturate(1.05);
+    }
+
+    .tag{
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: .3px;
+      margin-bottom: 8px;
+      text-transform: capitalize;
+    }
+    .card h3{
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #15362e;
+    }
+    .card p{
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    .read-more{
+      margin-top: auto;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      width: fit-content;
+    }
+    .read-more:hover{
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px){
+      header{ padding: 14px 16px; }
+      nav ul{ gap: 14px; font-size: 13px; }
+      .grid{ grid-template-columns: 1fr; }
+      .card{ min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span class="leaf">🌿</span>
+      <span>EcoShop</span>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 class="title">Sustainability Resources</h1>
+      <p class="subtitle">Learn about sustainable living and make informed choices</p>
+
+      <section class="grid">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">♻️</div></div>
+          <div class="tag">Zero Waste</div>
+          <h3>10 Easy Swaps for a Zero-Waste Kitchen</h3>
+          <p>
+            Discover simple changes that can dramatically reduce your kitchen waste
+            and save money in the process.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">👕</div></div>
+          <div class="tag">Eco Living</div>
+          <h3>The True Cost of Fast Fashion</h3>
+          <p>
+            Understanding the environmental and social impact of our clothing choices
+            and how to shop more consciously.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">🌱</div></div>
+          <div class="tag">Supplier Story</div>
+          <h3>Meet Our Organic Cotton Farmers</h3>
+          <p>
+            An interview with the family-run farm that supplies our organic cotton,
+            sharing their sustainable practices.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">🏡</div></div>
+          <div class="tag">Home Tips</div>
+          <h3>Creating an Eco-Friendly Home on a Budget</h3>
+          <p>
+            Practical tips for making your living space more sustainable without
+            breaking the bank.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">🌊</div></div>
+          <div class="tag">Impact</div>
+          <h3>How We’re Reducing Plastic in Our Oceans</h3>
+          <p>
+            Learn about our partnership with ocean cleanup initiatives and how your
+            purchases help.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card">
+          <div class="icon-wrap"><div class="icon">📚</div></div>
+          <div class="tag">Education</div>
+          <h3>Understanding Eco-Certifications</h3>
+          <p>
+            A comprehensive guide to sustainability certifications and what they
+            mean when you shop.
+          </p>
+          <a class="read-more" href="#">Read More →</a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoShop | Home</title>
+
+  <!-- Optional font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --page-bg: #ffffff;
+      --section-bg: #eef5f1;
+      --text: #0f1f18;
+      --muted: #5d6f67;
+      --accent: #1f7a4a;
+      --accent-dark: #155c37;
+      --border: rgba(15, 31, 24, 0.08);
+      --pill-bg: #e6f4ed;
+      --card-bg: #ffffff;
+      --shadow: 0 6px 18px rgba(0,0,0,0.06);
+      --radius: 14px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--page-bg);
+    }
+
+    /* ===== Navbar ===== */
+    header{
+      padding: 16px 36px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom: 1px solid var(--border);
+      background:#fff;
+      position: sticky;
+      top:0;
+      z-index:10;
+    }
+    .brand{
+      font-weight:800;
+      font-size:20px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .brand .leaf{ color: var(--accent); font-size:20px; }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:22px;
+      margin:0;
+      padding:0;
+      font-weight:600;
+      font-size:14.5px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--text);
+      padding-bottom:3px;
+      border-bottom:2px solid transparent;
+    }
+    nav a.active{
+      color:var(--accent);
+      border-color:var(--accent);
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      padding: 72px 18px 95px;
+      text-align:center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero h1{
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      margin: 10px 0 10px;
+    }
+    .hero p{
+      color: var(--muted);
+      font-size: 15.5px;
+      margin: 0 auto 28px;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+    .hero-actions{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-block;
+      padding: 12px 22px;
+      font-weight: 700;
+      border-radius: 8px;
+      font-size:14px;
+      text-decoration:none;
+      border:1.5px solid transparent;
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background: var(--accent-dark);
+      color:#fff;
+    }
+    .btn-primary:hover{ background: var(--accent); }
+    .btn-outline{
+      background:#fff;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn-outline:hover{
+      background: var(--pill-bg);
+    }
+
+    /* ===== Featured Products Section ===== */
+    .featured{
+      background: var(--section-bg);
+      padding: 55px 20px 70px;
+    }
+    .featured-inner{
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .featured h2{
+      text-align:center;
+      font-size: clamp(20px, 2.6vw, 28px);
+      font-weight: 800;
+      margin: 0 0 30px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card{
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border:1px solid var(--border);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      min-height: 320px;
+    }
+    .img-wrap{
+      height: 170px;
+      border-radius: 10px;
+      background:#f7faf8;
+      display:grid;
+      place-items:center;
+      font-size: 58px;
+      margin-bottom: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      font-weight:600;
+      color: var(--accent);
+      background: var(--pill-bg);
+      padding:4px 8px;
+      border-radius:999px;
+      width: fit-content;
+      margin-bottom:10px;
+    }
+    .card h3{
+      font-size:15px;
+      margin:0 0 6px;
+      font-weight:700;
+    }
+    .card p{
+      margin:0 0 12px;
+      font-size:13px;
+      color: var(--muted);
+      line-height:1.6;
+    }
+    .price{
+      margin-top:auto;
+      font-weight:800;
+      font-size:16px;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+    }
+    @media(max-width: 720px){
+      header{ padding:14px 18px; }
+      nav ul{ gap:12px; flex-wrap:wrap; justify-content:flex-end; }
+      .hero{ padding: 60px 16px 80px; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="brand">
+      <span class="leaf">🌿</span>
+      <span>EcoShop</span>
+    </div>
+
+    <nav>
+      <ul>
+        <!-- make sure these files exist -->
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Shop Sustainably Today</h1>
+    <p>Discover eco-friendly products for a better tomorrow</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="shop.html">Shop Now</a>
+      <a class="btn btn-outline" href="about.html">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured">
+    <div class="featured-inner">
+      <h2>Featured Products</h2>
+
+      <div class="grid">
+        <article class="card">
+          <div class="img-wrap">👕</div>
+          <div class="pill">🌿 Organic</div>
+          <h3>Organic Cotton Tee</h3>
+          <p>Soft, breathable, and planet-friendly</p>
+          <div class="price">$29.99</div>
+        </article>
+
+        <article class="card">
+          <div class="img-wrap">🧴</div>
+          <div class="pill">✨ Natural</div>
+          <h3>Bamboo Shampoo Bar</h3>
+          <p>Zero waste hair care solution</p>
+          <div class="price">$14.99</div>
+        </article>
+
+        <article class="card">
+          <div class="img-wrap">🏠</div>
+          <div class="pill">♻️ Recycled</div>
+          <h3>Recycled Glass Vase</h3>
+          <p>Handcrafted home decor</p>
+          <div class="price">$39.99</div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

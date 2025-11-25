@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoShop — Sustainable Products</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#1f5a44;
+      --green-dark:#123b2c;
+      --mint:#eef7f2;
+      --card:#fff;
+      --text:#0f172a;
+      --muted:#6b7280;
+      --shadow:0 8px 20px rgba(0,0,0,0.08);
+      --radius:14px;
+      --maxw:1150px;
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{
+      font-family:Inter, sans-serif;
+      color:var(--text);
+      background:var(--mint);
+    }
+    a{text-decoration:none; color:inherit;}
+
+    /* NAVBAR */
+    header{
+      background:#fff;
+      border-bottom:1px solid #eef2f7;
+      padding:14px 0;
+      position:sticky; top:0; z-index:10;
+    }
+    .nav{
+      max-width:var(--maxw);
+      margin:auto;
+      padding:0 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      font-size:18px;
+      color:var(--green-dark);
+    }
+    .brand .logo{font-size:20px;}
+    .links{
+      display:flex;
+      gap:22px;
+      font-size:14px;
+      font-weight:600;
+      color:#111827;
+    }
+    .links a{padding:6px 4px;}
+    .links a:hover{color:var(--green);}
+
+    /* PAGE LAYOUT */
+    .page{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:30px 20px 70px;
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap:26px;
+      align-items:start;
+    }
+    h1{
+      grid-column:1 / -1;
+      font-size:30px;
+      font-weight:800;
+      color:var(--green-dark);
+      margin:8px 0 14px;
+    }
+
+    /* SIDEBAR */
+    .sidebar{padding-top:8px;}
+    .side-block{margin-bottom:28px;}
+    .side-title{
+      font-size:14px;
+      font-weight:800;
+      margin-bottom:10px;
+      color:#0b1f15;
+    }
+    .check{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin:7px 0;
+      font-size:13px;
+      color:#111827;
+      cursor:pointer;
+      user-select:none;
+    }
+    .check input{
+      width:14px; height:14px;
+      accent-color: var(--green);
+      cursor:pointer;
+    }
+    .check .icon{font-size:12px; opacity:.9;}
+
+    .clear-btn{
+      margin-top:6px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--green);
+      background:#e6f5ee;
+      border:none;
+      padding:7px 10px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    .clear-btn:hover{filter:brightness(0.98);}
+
+    /* PRODUCT GRID */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid #ecf0f4;
+      padding:16px;
+      min-height:250px;
+      display:flex;
+      flex-direction:column;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 26px rgba(0,0,0,0.1);
+    }
+    .imgbox{
+      height:135px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:8px;
+      font-size:62px;
+    }
+
+    .badge{
+      font-size:11px;
+      font-weight:700;
+      color:var(--green);
+      background:#e6f5ee;
+      padding:4px 8px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      width:max-content;
+      margin:6px 0 8px;
+    }
+    .title{
+      font-size:15px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .desc{
+      font-size:12.5px;
+      color:var(--muted);
+      margin-bottom:12px;
+      line-height:1.45;
+    }
+    .price{
+      margin-top:auto;
+      font-weight:800;
+      font-size:16px;
+      color:#0b1f15;
+    }
+
+    .hidden{display:none !important;}
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.35);
+      display:none; place-items:center;
+      padding:20px; z-index:50;
+    }
+    .modal{
+      width:min(520px, 100%);
+      background:#fff;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.2);
+      position:relative;
+      animation:pop .15s ease;
+    }
+    @keyframes pop{from{transform:scale(.97);opacity:.6} to{transform:scale(1);opacity:1}}
+    .modal-close{
+      position:absolute; right:12px; top:10px;
+      border:none; background:#f1f5f9;
+      width:32px; height:32px; border-radius:50%;
+      font-size:18px; cursor:pointer;
+    }
+    .modal-img{
+      font-size:70px; text-align:center; margin:8px 0 12px;
+    }
+    .modal h3{font-size:20px; margin-bottom:6px;}
+    .modal p{color:var(--muted); font-size:14px; margin-bottom:12px;}
+    .modal .modal-price{font-weight:800; font-size:18px; margin-bottom:14px;}
+    .modal .modal-actions{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      padding:10px 16px; border-radius:10px;
+      font-weight:800; font-size:14px;
+      border:2px solid transparent; cursor:pointer;
+    }
+    .btn.primary{background:var(--green); color:#fff;}
+    .btn.primary:hover{background:#184c39;}
+    .btn.outline{
+      background:#fff; border-color:var(--green);
+      color:var(--green);
+    }
+    .btn.outline:hover{background:#f6faf8;}
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px){
+      .grid{grid-template-columns: repeat(2,1fr);}
+    }
+    @media (max-width: 720px){
+      .page{grid-template-columns: 1fr;}
+      .sidebar{
+        background:#fff;
+        padding:14px;
+        border-radius:12px;
+        box-shadow:var(--shadow);
+        border:1px solid #ecf0f4;
+      }
+      .grid{grid-template-columns: 1fr;}
+      .links{display:none;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <a href="#top" class="brand">
+        <span class="logo">🍃</span>
+        EcoShop
+      </a>
+      <nav class="links">
+        <a href="#top">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main id="top" class="page">
+    <h1>Sustainable Products</h1>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="side-block">
+        <div class="side-title">Categories</div>
+        <label class="check"><input type="checkbox" data-filter="category" value="clothing"> Clothing</label>
+        <label class="check"><input type="checkbox" data-filter="category" value="home"> Home</label>
+        <label class="check"><input type="checkbox" data-filter="category" value="beauty"> Beauty</label>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Certifications</div>
+        <label class="check"><input type="checkbox" data-filter="cert" value="organic"><span class="icon">🌿</span> Organic</label>
+        <label class="check"><input type="checkbox" data-filter="cert" value="recycled"><span class="icon">♻️</span> Recycled</label>
+        <label class="check"><input type="checkbox" data-filter="cert" value="natural"><span class="icon">🍃</span> Natural</label>
+
+        <button id="clearFilters" class="clear-btn" type="button">Clear Filters</button>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="grid">
+
+      <article class="card product"
+        data-category="clothing"
+        data-cert="organic"
+        data-title="Organic Cotton Tee"
+        data-desc="Soft, breathable fabric"
+        data-price="$29.99"
+        data-emoji="👕">
+        <div class="imgbox">👕</div>
+        <div class="badge">🌿 Organic</div>
+        <div class="title">Organic Cotton Tee</div>
+        <div class="desc">Soft, breathable fabric</div>
+        <div class="price">$29.99</div>
+      </article>
+
+      <article class="card product"
+        data-category="clothing"
+        data-cert="recycled"
+        data-title="Recycled Denim Jeans"
+        data-desc="Durable and stylish"
+        data-price="$79.99"
+        data-emoji="👖">
+        <div class="imgbox">👖</div>
+        <div class="badge">♻️ Recycled</div>
+        <div class="title">Recycled Denim Jeans</div>
+        <div class="desc">Durable and stylish</div>
+        <div class="price">$79.99</div>
+      </article>
+
+      <article class="card product"
+        data-category="beauty"
+        data-cert="natural"
+        data-title="Bamboo Shampoo Bar"
+        data-desc="Zero waste solution"
+        data-price="$14.99"
+        data-emoji="🧴">
+        <div class="imgbox">🧴</div>
+        <div class="badge">🍃 Natural</div>
+        <div class="title">Bamboo Shampoo Bar</div>
+        <div class="desc">Zero waste solution</div>
+        <div class="price">$14.99</div>
+      </article>
+
+      <article class="card product"
+        data-category="beauty"
+        data-cert="natural"
+        data-title="Organic Soap Set"
+        data-desc="Handmade with love"
+        data-price="$24.99"
+        data-emoji="🧼">
+        <div class="imgbox">🧼</div>
+        <div class="badge">🍃 Natural</div>
+        <div class="title">Organic Soap Set</div>
+        <div class="desc">Handmade with love</div>
+        <div class="price">$24.99</div>
+      </article>
+
+      <article class="card product"
+        data-category="home"
+        data-cert="recycled"
+        data-title="Recycled Glass Vase"
+        data-desc="Unique home decor"
+        data-price="$39.99"
+        data-emoji="🏺">
+        <div class="imgbox">🏺</div>
+        <div class="badge">♻️ Recycled</div>
+        <div class="title">Recycled Glass Vase</div>
+        <div class="desc">Unique home decor</div>
+        <div class="price">$39.99</div>
+      </article>
+
+      <article class="card product"
+        data-category="home"
+        data-cert="natural"
+        data-title="Soy Wax Candles"
+        data-desc="Clean burning scents"
+        data-price="$18.99"
+        data-emoji="🕯️">
+        <div class="imgbox">🕯️</div>
+        <div class="badge">🍃 Natural</div>
+        <div class="title">Soy Wax Candles</div>
+        <div class="desc">Clean burning scents</div>
+        <div class="price">$18.99</div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- simple extra sections so navbar feels real -->
+  <section id="about" style="max-width:1150px;margin:0 auto;padding:0 20px 30px;color:#334155;">
+    <h2 style="margin:10px 0 6px;color:#123b2c;">About</h2>
+    <p style="font-size:14px;">Add your EcoShop mission here.</p>
+  </section>
+  <section id="blog" style="max-width:1150px;margin:0 auto;padding:0 20px 30px;color:#334155;">
+    <h2 style="margin:10px 0 6px;color:#123b2c;">Blog</h2>
+    <p style="font-size:14px;">Add blog posts here.</p>
+  </section>
+  <section id="contact" style="max-width:1150px;margin:0 auto;padding:0 20px 70px;color:#334155;">
+    <h2 style="margin:10px 0 6px;color:#123b2c;">Contact</h2>
+    <p style="font-size:14px;">Add contact info here.</p>
+  </section>
+
+  <!-- MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-img" id="modalEmoji">🛍️</div>
+      <h3 id="modalTitle">Product</h3>
+      <p id="modalDesc">Description</p>
+      <div class="modal-price" id="modalPrice">$0.00</div>
+      <div class="modal-actions">
+        <button class="btn primary" type="button">Add to Cart</button>
+        <button class="btn outline" type="button">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- FILTERING ----------
+    const filterBoxes = document.querySelectorAll('input[data-filter]');
+    const products = document.querySelectorAll('.product');
+    const clearBtn = document.getElementById('clearFilters');
+
+    function getSelected(type){
+      return [...filterBoxes]
+        .filter(b => b.checked && b.dataset.filter === type)
+        .map(b => b.value);
+    }
+
+    function applyFilters(){
+      const cats = getSelected('category');
+      const certs = getSelected('cert');
+
+      products.forEach(p => {
+        const pCat = p.dataset.category;
+        const pCert = p.dataset.cert;
+
+        const catOk = cats.length === 0 || cats.includes(pCat);
+        const certOk = certs.length === 0 || certs.includes(pCert);
+
+        p.classList.toggle('hidden', !(catOk && certOk));
+      });
+    }
+
+    filterBoxes.forEach(b => b.addEventListener('change', applyFilters));
+
+    clearBtn.addEventListener('click', () => {
+      filterBoxes.forEach(b => b.checked = false);
+      applyFilters();
+    });
+
+    // ---------- CLICKABLE PRODUCT MODAL ----------
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalEmoji = document.getElementById('modalEmoji');
+
+    function openModal(product){
+      modalTitle.textContent = product.dataset.title;
+      modalDesc.textContent = product.dataset.desc;
+      modalPrice.textContent = product.dataset.price;
+      modalEmoji.textContent = product.dataset.emoji || "🛍️";
+
+      modalBackdrop.style.display = "grid";
+      modalBackdrop.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modalBackdrop.style.display = "none";
+      modalBackdrop.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "auto";
+    }
+
+    products.forEach(p => p.addEventListener('click', () => openModal(p)));
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if(e.target === modalBackdrop) closeModal();
+    });
+
+    // ESC key closes modal
+    window.addEventListener('keydown', (e) => {
+      if(e.key === "Escape" && modalBackdrop.style.display === "grid") closeModal();
+    });
+  </script>
+
+</body>
+</html>

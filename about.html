@@ -3,239 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoShop — About</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>EcoShop • Contact</title>
 
   <style>
     :root{
-      --green:#1f5a44;
-      --green-dark:#123b2c;
-      --mint:#eef7f2;
-      --text:#0f172a;
-      --muted:#6b7280;
-      --radius:14px;
-      --maxw:1100px;
+      --bg: #eef6f2;          /* same as About page */
+      --text: #0f241f;
+      --muted: #4a5a55;
+      --accent: #2f6b57;      /* Eco green */
+      --accent-soft: #8fd3b3; /* border green */
+      --white: #ffffff;
+      --shadow: 0 10px 26px rgba(16, 24, 40, 0.10);
+      --radius: 14px;
     }
-    *{box-sizing:border-box; margin:0; padding:0;}
+
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
     body{
-      font-family:Inter, sans-serif;
-      color:var(--text);
-      background:var(--mint);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
     }
-    a{color:inherit; text-decoration:none;}
 
-    /* NAVBAR */
+    /* Header */
     header{
-      background:#fff;
-      border-bottom:1px solid #e9eef3;
-      padding:14px 0;
-      position:sticky; top:0; z-index:1000;
+      width: 100%;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
     }
-    .nav{
-      max-width:var(--maxw);
-      margin:auto;
-      padding:0 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+    .logo{
+      font-weight: 800;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .brand{
-      display:flex; align-items:center; gap:8px;
-      font-weight:800; font-size:18px;
-      color:var(--green-dark);
-      cursor:pointer;
-    }
-    .brand .logo{font-size:20px;}
-    .links{
-      display:flex; gap:22px;
-      font-size:14px; font-weight:600; color:#111827;
-    }
-    .links a{
-      padding:6px 4px;
-      cursor:pointer;
-    }
-    .links a:hover{color:var(--green);}
-
-    /* PAGE */
-    main{
-      max-width:var(--maxw);
-      margin:0 auto;
-      padding:50px 20px 80px;
-    }
-    h1{
-      text-align:center;
-      font-size:30px;
-      font-weight:800;
-      color:var(--green-dark);
-      margin-bottom:40px;
+    .logo .leaf{
+      color: var(--accent);
+      font-size: 22px;
     }
 
-    /* TOP SECTION */
-    .top{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:50px;
-      align-items:start;
-      margin-bottom:90px;
+    nav ul{
+      list-style: none;
+      display: flex;
+      gap: 26px;
+      font-weight: 600;
+      font-size: 14px;
     }
-    .mission h2,
-    .impact h2{
-      font-size:18px;
-      font-weight:800;
-      color:#0b1f15;
-      margin-bottom:12px;
-    }
-    .mission p{
-      font-size:14px;
-      line-height:1.7;
-      color:#111827;
-      margin-bottom:14px;
-      max-width:540px;
-    }
-
-    .impact{padding-top:8px;}
-    .stat{margin:18px 0 28px;}
-    .stat .num{
-      font-size:32px;
-      font-weight:800;
-      color:#0b1f15;
-      margin-bottom:6px;
-    }
-    .stat .label{
-      font-size:12.5px;
-      color:var(--muted);
-      font-weight:600;
-    }
-
-    /* VALUES */
-    .values-title{
-      text-align:center;
-      font-weight:800;
-      font-size:18px;
-      margin-bottom:30px;
-      color:#0b1f15;
-    }
-    .values{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:26px;
-      text-align:center;
-    }
-    .value-card{padding:10px 8px;}
-    .value-icon{
-      font-size:34px;
-      margin-bottom:12px;
-    }
-    .value-card h3{
-      font-size:14.5px;
-      font-weight:800;
-      margin-bottom:8px;
-      color:#0b1f15;
-    }
-    .value-card p{
-      font-size:12.5px;
-      line-height:1.55;
-      color:var(--muted);
-      max-width:260px;
-      margin:0 auto;
-    }
-
-    /* RESPONSIVE */
-    @media(max-width:900px){
-      .top{grid-template-columns:1fr; gap:30px;}
-      .values{grid-template-columns:1fr;}
-      .links{display:none;}
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- NAV -->
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html">
-        <span class="logo">🍃</span>
-        EcoShop
-      </a>
-
-      <!-- IMPORTANT: file names must match your repo -->
-      <nav class="links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ABOUT CONTENT -->
-  <main>
-    <h1>About EcoShop</h1>
-
-    <section class="top">
-      <!-- LEFT -->
-      <div class="mission">
-        <h2>Our Mission</h2>
-        <p>
-          Our mission is to make sustainable living accessible to everyone.
-        </p>
-        <p>
-          We partner with ethical suppliers who share our values of transparency,
-          quality, and environmental responsibility. Every product in our store is vetted
-          for sustainability and crafted with care for both people and planet.
-        </p>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="impact">
-        <h2>Our Impact</h2>
-
-        <div class="stat">
-          <div class="num">10,000+</div>
-          <div class="label">Happy Customers</div>
-        </div>
-
-        <div class="stat">
-          <div class="num">50+</div>
-          <div class="label">Ethical Suppliers</div>
-        </div>
-
-        <div class="stat">
-          <div class="num">100%</div>
-          <div class="label">Carbon Neutral Shipping</div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="values-title">Our Values</div>
-
-      <div class="values">
-        <div class="value-card">
-          <div class="value-icon">🌍</div>
-          <h3>Planet First</h3>
-          <p>Every decision we make considers environmental impact</p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon">🤝</div>
-          <h3>Transparency</h3>
-          <p>We're open about our sourcing and practices</p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon">✨</div>
-          <h3>Quality</h3>
-          <p>Sustainable doesn't mean compromising on excellence</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-</body>
-</html>
+    nav a{
